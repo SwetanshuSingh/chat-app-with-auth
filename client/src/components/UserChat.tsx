@@ -2,10 +2,13 @@ import { useContext } from "react";
 import { ConversationContext, ConversationContextType } from "../context/ConversationContext";
 import { AuthContext, AuthContextType } from "../context/AuthContext";
 import UserMessages from "./UserMessges";
+import { useSocketContext } from "../context/SocketContext";
 
 const UserChat = () => {
   const { selectedConversation } = useContext<ConversationContextType | null>(ConversationContext)!;
   const { auth } = useContext<AuthContextType | null>(AuthContext)!;
+  const { onlineUsers } = useSocketContext() as { onlineUsers : string[] };
+  const isOnline = onlineUsers.includes(selectedConversation?.id ?? "");
 
   return (
     <main className="bg-white px-4 py-5 w-96 h-[500px] rounded-lg flex flex-col font-0">
@@ -21,22 +24,11 @@ const UserChat = () => {
             </div>
             <div className="text text-[#353535] flex flex-col justify-center gap">
               <h3 className="text-sm font-semibold">{selectedConversation.firstname} {selectedConversation.lastname}</h3>
-              <p className="text-xs text-gray-400">Online</p>
+              {isOnline ? (<p className="text-xs text-gray-400">Online</p>) : null}
             </div>
           </div>
 
           <UserMessages />
-          {/* <div className="messages flex-grow"></div>
-
-          <div className="w-full send-message flex gap-2">
-            <input
-              className="w-full border border-gray-400 outline-none rounded-md px-2 py-1"
-              type="text"
-            />
-            <button className="border border-gray-600 rounded-md px-2">
-              Send
-            </button>
-          </div> */}
         </>
       ) : (
         <div className="skeleton w-full h-full flex flex-col items-center justify-center">

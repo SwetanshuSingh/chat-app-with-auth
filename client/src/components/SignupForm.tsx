@@ -31,7 +31,7 @@ const SignupForm = () : React.JSX.Element => {
 
       <section className="w-full flex gap-2">
         <InputField labelName="Username" fieldName="username" formData={formData} placeholderText="enter..." fieldType="text" setFormData={setFormData} />
-        <InputField labelName="Password" fieldName="password" formData={formData} placeholderText="enter..." fieldType="password" setFormData={setFormData} />
+        <InputField labelName="Password" fieldName="password" formData={formData} placeholderText="enter..." fieldType="password" setFormData={setFormData} />  
       </section>
 
       <section className="w-full flex gap-2">

@@ -26,7 +26,7 @@ export const SocketContextProvider = ({children} : SocketContextProviderProps) =
 
     useEffect(() => {
         if(auth) {
-            const socket = io("http://localhost:5000", {
+            const socket = io("https://vondroy.onrender.com", {
                 query : {
                     userId : auth.id,
                 }

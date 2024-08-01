@@ -23,6 +23,12 @@ const useSignup = () => {
 
     const signup = async (formData : FormData) => {
 
+        
+        const passwordLength = formData.password.length
+        if(passwordLength < 6){
+            return toast.error("Passwords should be atleast 6 characters long")
+        }
+
         const { success } = userSchema.safeParse(formData);
         if(!success) {
             return toast.error("Invalid Form Details");            

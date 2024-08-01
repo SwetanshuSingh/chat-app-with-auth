@@ -18,7 +18,7 @@ const UserCard = ({ userDetails } : UserDetailsProps) : React.JSX.Element => {
     const {selectedConversation, setSelectedConversation} = useContext<ConversationContextType | null>(ConversationContext)!;
     const isSelected = selectedConversation?.id === userDetails.id
     const { onlineUsers } = useSocketContext() as { onlineUsers : string[] };
-    const isOnline = onlineUsers.includes(userDetails.id)
+    const isOnline = onlineUsers.includes(userDetails.id);
 
     return (
         <main onClick={() => {setSelectedConversation(userDetails)}} className={`${isSelected ? "bg-gray-200" : ""} p-2 w-72 font-0 flex border border-gray-500 rounded-lg justify-between cursor-default hover:bg-gray-200`}>
@@ -29,14 +29,12 @@ const UserCard = ({ userDetails } : UserDetailsProps) : React.JSX.Element => {
                 </div>
                 <div className="text text-[#353535] flex flex-col justify-center gap-2">
                     <h3 className="text-sm">{ userDetails.firstname }</h3>
-                    <p className="text-xs text-gray-400">Brooo</p>
                 </div>
             </div>
             <div className="right">
-                <h3 className="text-xs capitalize text-gray-400">Just Now</h3>
+                {/* <h3 className="text-xs capitalize text-gray-400">Just Now</h3> */}
             </div>
         </main>
     )
 }
-
 export default UserCard;
